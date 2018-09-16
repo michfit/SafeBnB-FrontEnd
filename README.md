@@ -1,4 +1,6 @@
-# SafeAirbnbToronto
+# SafeBnB FrontEnd(Angular)
+
+This is the frontend part of the project SafeBnB which developed during Hack The North 2018 @ University of Waterloo
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.0.3.
 
