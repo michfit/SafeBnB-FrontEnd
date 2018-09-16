@@ -26,6 +26,10 @@ export class ListingsComponent implements OnInit {
     db.list('/airbnb')
     .valueChanges()
     .subscribe(res => {
+      $('.preloader-background').fadeOut('slow');
+      $('.preloader-wrapper').fadeOut();
+      console.log($('.waves-effect.waves-light.btn.view-more').length)
+      $('.waves-effect.waves-light.btn.view-more').attr('hidden', false)
         this.listings = res;
         this.listings.sort((a, b) => {
           let keyA = a.danger_index
@@ -35,7 +39,6 @@ export class ListingsComponent implements OnInit {
           return 0;
       });
       this.showed_listings = this.listings.slice(0, this.pageSize);
-      console.log(this.showed_listings)
     })
   }
 
@@ -92,7 +95,7 @@ export class ListingsComponent implements OnInit {
   }
 
   prev() {
-    if (this.index - this.pageSize < 0) return
+    if (this.index - this.pageSize < 1) return
     this.index -= this.pageSize
     this.pageNum -= this.pageSize
     this.showed_listings = this.listings.slice(this.index-this.pageSize, this.index);
