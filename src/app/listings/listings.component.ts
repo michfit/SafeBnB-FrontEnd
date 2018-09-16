@@ -18,6 +18,7 @@ export class ListingsComponent implements OnInit {
   index = 6;
   length = 100;
   pageSize = 6;
+  pageNum = 0
   pageSizeOptions: number[] = [5, 10, 25, 100];
 
   constructor(db: AngularFireDatabase) {
@@ -33,6 +34,7 @@ export class ListingsComponent implements OnInit {
           return 0;
       });
       this.showed_listings = this.listings.slice(0, this.pageSize);
+      console.log(this.showed_listings)
     })
   }
 
@@ -64,7 +66,8 @@ export class ListingsComponent implements OnInit {
     }
   }
 
-  voted(e) {
+  voted(e, i) {
+    console.log(i)
     //console.log(firebase.auth().currentUser)
     if (!!firebase.auth().currentUser) {
       //console.log(e.target.checked)
@@ -77,12 +80,14 @@ export class ListingsComponent implements OnInit {
 
   more() {
     this.index += this.pageSize
+    this.pageNum += this.pageSize
     this.showed_listings = this.listings.slice(this.index, this.index+this.pageSize)
   }
 
   prev() {
     if (this.index - this.pageSize < 0) return
     this.index -= this.pageSize
+    this.pageNum -= this.pageSize
     this.showed_listings = this.listings.slice(this.index-this.pageSize, this.index);
   }
 
