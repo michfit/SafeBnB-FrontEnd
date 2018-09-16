@@ -22,6 +22,8 @@ export class ListingsComponent implements OnInit {
   pageNum = 0
   pageSizeOptions: number[] = [5, 10, 25, 100];
 
+  public currentListing;
+
   constructor(db: AngularFireDatabase) {
     db.list('/airbnb')
     .valueChanges()
