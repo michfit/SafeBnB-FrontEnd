@@ -1,5 +1,5 @@
 <div *ngFor="let listing of showed_listings; let i = index" class="col-m-4">
-    <mat-card class="example-card" style="height: 70vh">
+    <mat-card class="example-card" style="height: 80vh">
         <a [href]="listing['Listing Url']" target="_blank"><img mat-card-image [src]="listing['XL Picture Url']"></a>
         <mat-card-header>
             <mat-card-title>{{listing.Name}}</mat-card-title>
@@ -13,9 +13,13 @@
             <p style="display: inline; margin-left: 0.5em" *ngIf="this.hidden === false" class="indicator">{{calculate_relative(listing.danger_index)}} % Average Crime Index</p>
             <p *ngIf="this.hidden === true" >Unsafe Area</p>
             <label style="margin-top: 1em">
-                <input type="checkbox" class="filled-in" (change)="voted($event)"/>
+                <input type="checkbox" class="filled-in" (change)="voted($event, i+pageNum)"/>
                 <span>Vote Safe</span>
             </label>
+            <section>
+                <p class="indicator">{{listing['safety_rating']}}</p>
+                <p class="indicator">{{listing['satisfaction_rating']}}</p>
+            </section>
         </mat-card-actions>
     </mat-card>
 </div>

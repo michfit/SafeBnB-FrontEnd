@@ -41,3 +41,7 @@ mat-card-actions img {
 .view-more {
     margin-bottom: 20vh;
 }
+
+mat-card[_ngcontent-c2] img[_ngcontent-c2] {
+    height: 45%;
+}
