@@ -17,8 +17,9 @@
                 <span>Vote Safe</span>
             </label>
             <section>
-                <p class="indicator">{{listing['safety_rating']}}</p>
-                <p class="indicator">{{listing['satisfaction_rating']}}</p>
+                <p class="indicator">Safety Rating: {{listing['safety_rating']}}%</p>
+                <p class="indicator">Satisfaction Rating: {{listing['satisfaction_rating'].toFixed(2)}}%</p>
+                <p class="indicator">Data based off reviews and text analysis.</p>
             </section>
         </mat-card-actions>
     </mat-card>

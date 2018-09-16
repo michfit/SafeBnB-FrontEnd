@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AngularFireDatabase } from 'angularfire2/database';
 import * as firebase from 'firebase'
 import * as M from 'materialize-css'
+import 'firebase/functions'
 
 @Component({
   selector: 'app-listings',
@@ -70,10 +71,16 @@ export class ListingsComponent implements OnInit {
 
   voted(e, i) {
     console.log(i)
+    const functions = firebase.functions();
+
     //console.log(firebase.auth().currentUser)
     if (!!firebase.auth().currentUser) {
       //console.log(e.target.checked)
       M.toast({html: 'ok'})
+      let addVote = firebase.functions().httpsCallable('addVote')
+      addVote({id: i}).then((res) => {
+        console.log(res.data.text)
+      })
     } else {
       e.preventDefault()
       M.toast({html: 'You must be logged in to use this feature'})
