@@ -13,6 +13,11 @@ export class ListingsComponent implements OnInit {
   public listings;
   public showed_listings;
   public AVERAGE_DANGER_LEVEL = 3572.9931034482747;
+  public hidden = false;
+
+  length = 100;
+  pageSize = 10;
+  pageSizeOptions: number[] = [5, 10, 25, 100];
 
   constructor(db: AngularFireDatabase) {
     db.list('/')
@@ -27,19 +32,26 @@ export class ListingsComponent implements OnInit {
           if(keyA > keyB) return 1;
           return 0;
       });
-        this.showed_listings = this.listings.slice(0, 6);
+        this.showed_listings = this.listings.splice(0, 6);
         console.log(this.showed_listings);
     })
   }
 
   calculate_relative(danger_level) {
     if(danger_level === 0) {
-      return "Safest Area";
+      return 0
     }
     if(danger_level < this.AVERAGE_DANGER_LEVEL) {
       let num = (danger_level/this.AVERAGE_DANGER_LEVEL*100).toFixed(2);
-      return `${num} % Average Crime Index`;
+      return num
+    }else {
+      this.hidden=true;
+      return -1
     }
+  }
+
+  more() {
+    this.showed_listings = this.listings.splice(0, 6);
   }
 
   ngOnInit() {

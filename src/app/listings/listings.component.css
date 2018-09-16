@@ -25,3 +25,11 @@ mat-card-actions {
     margin-top: 3%;
     padding-left: 10%;
 }
+
+mat-card-actions img {
+    margin-top: 4%;
+}
+
+.view-more {
+    margin-bottom: 20vh;
+}
