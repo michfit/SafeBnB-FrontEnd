@@ -5,3 +5,7 @@
 .search li {
     font-size: 1.2rem;
 }
+
+.nav-wrapper {
+    padding-left: 2em;
+}
