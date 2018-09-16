@@ -31,7 +31,7 @@ export class ListingsComponent implements OnInit {
       $('.preloader-background').fadeOut('slow');
       $('.preloader-wrapper').fadeOut();
       console.log($('.waves-effect.waves-light.btn.view-more').length)
-      $('.waves-effect.waves-light.btn.view-more').attr('hidden', false)
+      $('.waves-effect.waves-light.btn.view-more').attr('hidden', <any>false)
         this.listings = res;
         this.listings.sort((a, b) => {
           let keyA = a.danger_index
