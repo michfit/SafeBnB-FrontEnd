@@ -11,6 +11,8 @@
   },
   "private": true,
   "dependencies": {
+    "@angular/animations": "^6.0.0",
+    "@angular/cdk": "^6.2.0",
     "@angular/common": "^6.0.2",
     "@angular/compiler": "^6.0.2",
     "@angular/core": "^6.0.2",
@@ -20,13 +22,13 @@
     "@angular/platform-browser": "^6.0.2",
     "@angular/platform-browser-dynamic": "^6.0.2",
     "@angular/router": "^6.0.2",
+    "@types/materialize-css": "^1.0.4",
     "angularfire2": "^5.0.1",
     "core-js": "^2.5.4",
     "firebase": "^5.5.0",
+    "materialize-css": "^1.0.0-rc.2",
     "rxjs": "^6.0.0",
-    "zone.js": "^0.8.26",
-    "@angular/cdk": "^6.2.0",
-    "@angular/animations": "^6.0.0"
+    "zone.js": "^0.8.26"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~0.6.3",

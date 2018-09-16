@@ -7,5 +7,9 @@
 }
 
 .nav-wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    flex-wrap: nowrap;
     padding-left: 2em;
 }

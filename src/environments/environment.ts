@@ -6,7 +6,7 @@ export const environment = {
   production: true,
   firebase: {
         apiKey: 'AIzaSyAHbtd5_ZYQYfpYQONjggJ1KolrflNteDY',
-        authDomain: 'fbepis-ab238.firebaseapp.com',
+        authDomain: 'bepis-ab238.firebaseapp.com',
         databaseURL: 'https://bepis-ab238.firebaseio.com',
         projectId: 'bepis-ab238',
         messagingSenderId: '1059438521347'

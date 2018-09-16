@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFireDatabase } from 'angularfire2/database';
-
+import * as firebase from 'firebase'
+import * as M from 'materialize-css'
 
 @Component({
   selector: 'app-listings',
@@ -10,31 +11,33 @@ import { AngularFireDatabase } from 'angularfire2/database';
 
 export class ListingsComponent implements OnInit {
 
-  public listings;
+  public listings: any[];
   public showed_listings;
   public AVERAGE_DANGER_LEVEL = 3572.9931034482747;
   public hidden = false;
-
+  index = 6;
   length = 100;
-  pageSize = 10;
+  pageSize = 6;
   pageSizeOptions: number[] = [5, 10, 25, 100];
 
   constructor(db: AngularFireDatabase) {
-    db.list('/')
+    db.list('/airbnb')
     .valueChanges()
     .subscribe(res => {
-        // console.log(res)
         this.listings = res;
-        this.listings.sort(function(a, b){
+        this.listings.sort((a, b) => {
           let keyA = a.danger_index
           let keyB = b.danger_index
           if(keyA < keyB) return -1;
           if(keyA > keyB) return 1;
           return 0;
       });
-        this.showed_listings = this.listings.splice(0, 6);
-        console.log(this.showed_listings);
+      this.showed_listings = this.listings.slice(0, this.pageSize);
     })
+  }
+
+  get_votes(i) {
+    console.log(i)
   }
 
   calculate_relative(danger_level) {
@@ -50,8 +53,37 @@ export class ListingsComponent implements OnInit {
     }
   }
 
+  image_for_safety(danger_level) {
+    const avg = parseInt((danger_level/this.AVERAGE_DANGER_LEVEL*100).toFixed(2))
+    if (avg < 30) {
+      return 'assets/safety.png'
+    } else if (avg < 70) {
+      return 'assets/safety-warning.png'
+    } else {
+      return 'assets/safety-error.png'
+    }
+  }
+
+  voted(e) {
+    //console.log(firebase.auth().currentUser)
+    if (!!firebase.auth().currentUser) {
+      //console.log(e.target.checked)
+      M.toast({html: 'ok'})
+    } else {
+      e.preventDefault()
+      M.toast({html: 'You must be logged in to use this feature'})
+    }
+  }
+
   more() {
-    this.showed_listings = this.listings.splice(0, 6);
+    this.index += this.pageSize
+    this.showed_listings = this.listings.slice(this.index, this.index+this.pageSize)
+  }
+
+  prev() {
+    if (this.index - this.pageSize < 0) return
+    this.index -= this.pageSize
+    this.showed_listings = this.listings.slice(this.index-this.pageSize, this.index);
   }
 
   ngOnInit() {
