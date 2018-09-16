@@ -51,12 +51,38 @@
     <div class="modal-content">
       <h4>Major Crime Index Year 2017 within 2 km</h4>
       <br>
-      <p>Assault: {{currentListing.crimes_count.Assault}}</p>
+      <!-- <p>Assault: {{currentListing.crimes_count.Assault}}</p>
       <p>Auto Theft: {{currentListing.crimes_count['Auto Theft']}}</p>
       <p>Break and Enter : {{currentListing.crimes_count['Break and Enter']}}</p>
       <p>Homicide: {{currentListing.crimes_count.Homicide}}</p>
       <p>Robbery:  {{currentListing.crimes_count.Robbery}}</p>
-      <p>Theft Over: {{currentListing.crimes_count['Theft Over']}} </p>
+      <p>Theft Over: {{currentListing.crimes_count['Theft Over']}} </p>  -->
+      <table class="table">
+            <thead class="thead-dark">
+              <tr>
+                <th scope="col">Category</th>
+                <th scope="col">Assault</th>
+                <th scope="col">Auto Theft</th>
+                <th scope="col">Break and Enter</th>
+                <th scope="col">Homicide</th>
+                <th scope="col">Robbery</th>
+                <th scope="col">Theft Over</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">#</th>
+                <td>{{currentListing.crimes_count.Assault}}</td>
+                <td>{{currentListing.crimes_count['Auto Theft']}}</td>
+                <td>{{currentListing.crimes_count['Break and Enter']}}</td>
+                <td>{{currentListing.crimes_count.Homicide}}</td>
+                <td>{{currentListing.crimes_count.Robbery}}</td>
+                <td>{{currentListing.crimes_count['Theft Over']}}</td>
+
+                
+              </tr>
+              </tbody>
+        </table>
     </div>
     <div class="modal-footer">
       <a href="#!" class="modal-close waves-effect waves-green btn-flat">Close</a>
