@@ -45,3 +45,7 @@ mat-card-actions img {
 mat-card[_ngcontent-c2] img[_ngcontent-c2] {
     height: 45%;
 }
+
+body > app-root > div > div > app-listings {
+    width: 100%;
+}
