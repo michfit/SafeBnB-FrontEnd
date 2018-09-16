@@ -1,0 +1,17 @@
+<div *ngFor="let listing of showed_listings"  class="col-m-4">
+    <mat-card class="example-card">
+            <a [href]="listing.listing_url" target="_blank"><img mat-card-image [src]="listing.picture"></a>
+            <mat-card-header>
+                    <mat-card-title>{{listing.name}}</mat-card-title>
+                    <mat-card-subtitle>{{listing.city}}, {{listing.country}}</mat-card-subtitle>
+            </mat-card-header>
+
+            <mat-card-actions>
+                <img src="https://cdn1.iconfinder.com/data/icons/mix-color-3/502/Untitled-50-512.png" alt="">
+                <!-- <button mat-button>LIKE</button>
+                <button mat-button>SHARE</button> -->
+            </mat-card-actions>
+        </mat-card>
+</div>
+
+
