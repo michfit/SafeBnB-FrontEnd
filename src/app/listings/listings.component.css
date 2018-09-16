@@ -9,6 +9,14 @@ mat-card {
     height: 60vh;
 }
 
+.safety-icon {
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    width: 2em;
+    height: 2em !important;
+}
+
 mat-card img {
     height: 70%;
 }
